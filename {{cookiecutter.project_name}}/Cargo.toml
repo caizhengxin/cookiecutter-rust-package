@@ -1,0 +1,74 @@
+[package]
+name = "{{cookiecutter.project_name}}"
+version = "{{cookiecutter.version}}"
+edition = "2021"
+authors = [
+    "{{cookiecutter.author_name}} <{{cookiecutter.email}}>",
+]
+description = "{{cookiecutter.description}}"
+repository = "https://{{cookiecutter.code_hosting}}.com/{{cookiecutter.code_hosting_username}}/{{cookiecutter.project_name}}"
+homepage = "https://{{cookiecutter.code_hosting}}.com/{{cookiecutter.code_hosting_username}}/{{cookiecutter.project_name}}"
+readme = "README.md"
+# https://crates.io/category_slugs
+categories = [
+    "command-line-utilities",
+]
+keywords = [
+    "{{cookiecutter.project_name}}",
+]
+license-file = "LICENSE"
+include = [
+    "src/*",
+    "benches/*",
+    "examples/*",
+    "Cargo.toml",
+    "LICENSE*",
+    "README.md",
+]
+
+{% if cookiecutter.use_build_deb == 'y' %}
+[package.metadata.deb]
+maintainer = "{{cookiecutter.author_name}} <{{cookiecutter.email}}>"
+copyright = "{% now 'utc', '%Y' %}, {{cookiecutter.author_name}} <{{cookiecutter.email}}>"
+license-file = ["LICENSE"]
+description = "{{cookiecutter.description}}"
+depends = "$auto"
+section = "utility"
+priority = "optional"
+changelog = "CHANGELOG.md"
+# pre-depends = "libpcap-dev"
+maintainer-scripts = "scripts"
+assets = [
+    # ["target/release/{{cookiecutter.project_name}}", "usr/bin/", "755"],
+]
+{% endif %}
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[[bin]]
+name = "{{cookiecutter.project_name}}"
+path = "src/cli.rs"
+
+[[example]]
+name = "{{cookiecutter.project_name}}-main"
+path = "src/main.rs"
+
+[profile.dev]
+opt-level = 1
+overflow-checks = false
+
+[dependencies]
+{% if cookiecutter.use_clap == 'y' %}clap = { version = "4", features = ["derive"] }{% endif %}
+{% if cookiecutter.use_serde == 'y' %}serde = { version = "1", features = ["derive"] }{% endif %}
+{% if cookiecutter.use_serde_json == 'y' %}serde_json = "1"{% endif %}
+{% if cookiecutter.use_serde_toml == 'y' %}toml = "0"{% endif %}
+{% if cookiecutter.use_thiserror == 'y' %}thiserror = "1"{% endif %}
+{% if cookiecutter.use_tracing == 'y' %}tracing = "0.1"{% endif %}
+{% if cookiecutter.use_tracing == 'y' %}tracing-subscriber = { version = "0.3", features = ["env-filter"] }{% endif %}
+{% if cookiecutter.use_chrono == 'y' %}chrono="0.4"{% endif %}
+{% if cookiecutter.use_lazy_static == 'y' %}lazy_static = "1"{% endif %}
+
+[dev-dependencies]
+
+# [build-dependencies]
+# bindgen = "0.69"

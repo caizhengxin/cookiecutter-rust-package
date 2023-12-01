@@ -1,0 +1,30 @@
+{
+    "project_name": "example-rs",
+    "project_slug": "{{ cookiecutter.project_name.lower()|replace(' ', '_')|replace('-', '_')|replace('.', '_')|trim() }}",
+    "description": "{{ cookiecutter.project_name.upper()|replace('-', ' ') }}!",
+    "author_name": "Author",
+    "email": "{{ cookiecutter.author_name.lower()|replace(' ', '-') }}@example.com",
+    "version": "0.1.0",
+    "code_hosting": [
+        "github",
+        "gitee",
+        "gitlab"
+    ],
+    "code_hosting_username": "Code hosting username.",
+    "open_source_license": [
+        "MIT",
+        "BSD",
+        "GPLv3",
+        "Apache Software License 2.0",
+        "Not open source"
+    ],
+    "use_clap": "n",
+    "use_tracing": "n",
+    "use_chrono": "n",
+    "use_serde": "n",
+    "use_serde_json": "n",
+    "use_serde_toml": "n",
+    "use_thiserror": "n",
+    "use_lazy_static": "n",
+    "use_build_deb": "n"
+}

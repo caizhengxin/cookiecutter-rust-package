@@ -1,0 +1,21 @@
+use clap::Parser;
+
+
+#[derive(Parser, Debug)]
+#[clap(author, version, about, long_about = None)]
+pub struct Cli {
+    #[clap(short, long)]
+    pub name: Option<String>,
+}
+
+
+fn main() {
+    {% if cookiecutter.use_tracing == 'y' %}tracing_subscriber::fmt()
+        .with_env_filter(tracing_subscriber::EnvFilter::from_default_env())
+        .with_line_number(true)
+        .init();{% endif %}
+    let cli = Cli::parse();
+
+    println!("{cli:?}");
+    println!("Hello, world!");
+}
