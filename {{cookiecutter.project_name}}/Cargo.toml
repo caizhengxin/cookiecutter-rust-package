@@ -16,7 +16,7 @@ categories = [
 keywords = [
     "{{cookiecutter.project_name}}",
 ]
-license-file = "LICENSE"
+license = "MIT OR Apache-2.0"
 include = [
     "src/*",
     "benches/*",
@@ -30,7 +30,7 @@ include = [
 [package.metadata.deb]
 maintainer = "{{cookiecutter.author_name}} <{{cookiecutter.email}}>"
 copyright = "{% now 'utc', '%Y' %}, {{cookiecutter.author_name}} <{{cookiecutter.email}}>"
-license-file = ["LICENSE"]
+license-file = ["LICENSE-MIT"]
 description = "{{cookiecutter.description}}"
 depends = "$auto"
 section = "utility"
