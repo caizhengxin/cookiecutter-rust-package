@@ -12,6 +12,7 @@ readme = "README.md"
 # https://crates.io/category_slugs
 categories = [
     "command-line-utilities",
+    "development-tools",
 ]
 keywords = [
     "{{cookiecutter.project_name}}",
@@ -48,10 +49,6 @@ assets = [
 [[bin]]
 name = "{{cookiecutter.project_name}}"
 path = "src/cli.rs"
-
-[[example]]
-name = "{{cookiecutter.project_name}}-main"
-path = "src/main.rs"
 
 [profile.dev]
 opt-level = 1
